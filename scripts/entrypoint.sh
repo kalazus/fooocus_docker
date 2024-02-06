@@ -1,27 +1,24 @@
 #!/bin/bash
 
 ORIGINALDIR=/content/app
-# Use predefined DATADIR if it is defined
-[[ x"${DATADIR}" == "x" ]] && DATADIR=/content/data
 
 # make persistent dir from original dir
-function linkreplace () {
+function linkdir () {
 	local data_source=$ORIGINALDIR/$1
 	local data_target=$DATADIR/$1
-	mkdir -p $DATADIR
-	if [ -d $data_source ] || [ -f $data_source ]; then
-		mv -if $data_source $data_target
-	else
-		mkdir -p $data_target
-	fi
 	ln -s $data_target $data_source
 }
 
+if [ ! -d $DATADIR/models ]; then
+	mkdir -p $DATADIR/outputs
+	cp -r $ORIGINALDIR/models.org $DATADIR/models/
+fi
+
 # models
-linkreplace models
+linkdir models
 
 # outputs
-linkreplace outputs
+linkdir outputs
 
 # Start application
 cd $ORIGINALDIR

@@ -22,6 +22,7 @@ RUN ${TORCH_COMMAND} && \
     pip install ${XFORMERS_PACKAGE}
 
 COPY --chmod=755 scripts/* ./
+RUN mv /content/app/models /content/app/models.org
 
 WORKDIR /content
 
