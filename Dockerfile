@@ -21,12 +21,8 @@ RUN ${TORCH_COMMAND} && \
     pip install -r requirements_versions.txt --extra-index-url ${TORCH_INDEX_URL} && \
     pip install ${XFORMERS_PACKAGE}
 
-RUN adduser --disabled-password --gecos '' user
-
-COPY scripts/* /content/app
-RUN chown -R user:user /content
+COPY --chmod=755 scripts/* ./
 
 WORKDIR /content
-USER user
 
 CMD /content/app/entrypoint.sh
