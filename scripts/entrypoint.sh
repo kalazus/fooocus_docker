@@ -6,9 +6,15 @@ ORIGINALDIR=/content/app
 
 # make persistent dir from original dir
 function linkreplace () {
+	local data_source=$ORIGINALDIR/$1
+	local data_target=$DATADIR/$1
 	mkdir -p $DATADIR
-	mv -if $ORIGINALDIR/$1 $DATADIR/$1 
-	ln -s $DATADIR/$1 $ORIGINALDIR/$1
+	if [ -d $data_source ] || [ -f $data_source ]; then
+		mv -if $data_source $data_target
+	else
+		mkdir -p $data_target
+	fi
+	ln -s $data_target $data_source
 }
 
 # models
