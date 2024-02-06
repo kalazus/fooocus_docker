@@ -1,2 +1,0 @@
-xformers==0.0.23.post1
-triton==2.1.0
