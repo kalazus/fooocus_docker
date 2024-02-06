@@ -6,19 +6,17 @@ ORIGINALDIR=/content/app
 
 # make persistent dir from original dir
 function mklink () {
-	mkdir -p $DATADIR/$1
-	ln -s $DATADIR/$1 $ORIGINALDIR
+	mkdir -p $DATADIR
+	mv -if $DATADIR/$1 $ORIGINALDIR/$1
+	ln -s $DATADIR/$1 $ORIGINALDIR/$1
 }
-
-cd $ORIGINALDIR
 
 # models
 mklink models
-# Copy original files
-(cd $ORIGINALDIR/models.org && cp -Rpn . $ORIGINALDIR/models/)
 
 # outputs
 mklink outputs
 
 # Start application
-python entry_with_update.py  ${CMDARGS}
+cd $ORIGINALDIR
+python entry_with_update.py --listen --port 3001  ${CMDARGS} > $ORIGINALDIR/fooocus.log 2>&1

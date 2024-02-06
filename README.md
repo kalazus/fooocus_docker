@@ -1,8 +1,10 @@
+Based on https://github.com/whitehara/Fooocus
+
 # Fooocus on Docker
 
-It's based on NVIDIA CUDA 12.3. See [Dockerfile](Dockerfile) for details.
+It's based on NVIDIA CUDA 11.8. See [Dockerfile](Dockerfile) for details.
 
-PyTorch version is 2.1. See [requirements_docker.txt](requirements_docker.txt) for details.
+PyTorch version is 2.1. See [Dockerfile](Dockerfile) for details.
 
 ## Quick start
 
@@ -45,8 +47,6 @@ Docker specified environments are there. They are used by 'entrypoint.sh'
 |-|-|
 |DATADIR|'/content/data' location.|
 |CMDARGS|Arguments for [entry_with_update.py](entry_with_update.py) which is called by [entrypoint.sh](entrypoint.sh)|
-|config_path|'config.txt' location|
-|config_example_path|'config_modification_tutorial.txt' location|
 
 You can also use the same json key names and values explained in the 'config_modification_tutorial.txt' as the environments.
 See samples in the [docker-compose.yml](docker-compose.yml)
