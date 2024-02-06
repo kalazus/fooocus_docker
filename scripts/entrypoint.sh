@@ -19,4 +19,4 @@ mklink outputs
 
 # Start application
 cd $ORIGINALDIR
-python entry_with_update.py --listen --port 3001  ${CMDARGS} > $ORIGINALDIR/fooocus.log 2>&1
+python entry_with_update.py --listen --port 3001  ${CMDARGS} > $DATADIR/fooocus.log 2>&1
