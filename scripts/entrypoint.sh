@@ -5,17 +5,17 @@ ORIGINALDIR=/content/app
 [[ x"${DATADIR}" == "x" ]] && DATADIR=/content/data
 
 # make persistent dir from original dir
-function mklink () {
+function linkreplace () {
 	mkdir -p $DATADIR
-	mv -if $DATADIR/$1 $ORIGINALDIR/$1
+	mv -if $ORIGINALDIR/$1 $DATADIR/$1 
 	ln -s $DATADIR/$1 $ORIGINALDIR/$1
 }
 
 # models
-mklink models
+linkreplace models
 
 # outputs
-mklink outputs
+linkreplace outputs
 
 # Start application
 cd $ORIGINALDIR
