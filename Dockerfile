@@ -14,12 +14,12 @@ RUN git clone https://github.com/lllyasviel/Fooocus /content/app
 WORKDIR /content/app
 
 ENV TORCH_INDEX_URL="https://download.pytorch.org/whl/cu118"
-ENV TORCH_COMMAND="pip install torch==2.1.2 torchvision --index-url ${TORCH_INDEX_URL}"
-ENV XFORMERS_PACKAGE="xformers==0.0.23.post1"
+ENV TORCH_COMMAND="pip install torch==2.0.1 torchvision --index-url ${TORCH_INDEX_URL}"
+ENV XFORMERS_PACKAGE="xformers==0.0.22"
 
 RUN ${TORCH_COMMAND} && \
     pip install -r requirements_versions.txt --extra-index-url ${TORCH_INDEX_URL} && \
-    pip install ${XFORMERS_PACKAGE}
+    pip install ${XFORMERS_PACKAGE} --index-url ${TORCH_INDEX_URL}
 
 COPY --chmod=755 scripts/* ./
 RUN mv /content/app/models /content/app/models.org
