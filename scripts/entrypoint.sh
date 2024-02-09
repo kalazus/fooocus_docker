@@ -18,7 +18,7 @@ fi
 linkdir models
 
 # outputs
-linkdir outputs
+sed -i -e "s+$ORIGINALDIR/outputs+$DATADIR/outputs+g" $ORIGINALDIR/config.txt
 
 # Start application
 cd $ORIGINALDIR
