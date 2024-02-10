@@ -10,7 +10,7 @@ function linkdir () {
 }
 
 if [ ! -d $DATADIR/models ]; then
-	mkdir -p $DATADIR/outputs
+	#mkdir -p $DATADIR/outputs
 	cp -r $ORIGINALDIR/models.org $DATADIR/models/
 fi
 
@@ -18,7 +18,7 @@ fi
 linkdir models
 
 # outputs
-sed -i -e "s+$ORIGINALDIR/outputs+$DATADIR/outputs+g" $ORIGINALDIR/config.txt
+#sed -i -e "s+$ORIGINALDIR/outputs+$DATADIR/outputs+g" $ORIGINALDIR/config.txt
 
 # Start application
 cd $ORIGINALDIR
