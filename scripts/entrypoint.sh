@@ -26,6 +26,13 @@ cd $ORIGINALDIR
 FOOOCUS_LOGS=$DATADIR/fooocus.log
 python entry_with_update.py --listen --port 3001  ${CMDARGS} > $FOOOCUS_LOGS 2>&1 &
 
+LINK=""
+while [[ ! $LINK ]]; do
+	LINK=$(grep -o 'Running on public URL.*' $FOOOCUS_LOGS)
+	sleep 10
+done
+echo $LINK
+
 # check usage
 touch $FOOOCUS_LOGS
 ./vast_usage.sh 20 $FOOOCUS_LOGS
