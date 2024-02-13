@@ -22,4 +22,10 @@ linkdir models
 
 # Start application
 cd $ORIGINALDIR
-python entry_with_update.py --listen --port 3001  ${CMDARGS} > $DATADIR/fooocus.log 2>&1
+FOOOCUS_LOGS=$DATADIR/fooocus.log
+python entry_with_update.py --listen --port 3001  ${CMDARGS} > $FOOOCUS_LOGS 2>&1 &
+
+# check usage
+touch $FOOOCUS_LOGS
+vast_usage 20 $FOOOCUS_LOGS
+
