@@ -10,6 +10,7 @@ function linkdir () {
 }
 
 if [ ! -d $DATADIR/models ]; then
+	mkdir -p $DATADIR
 	#mkdir -p $DATADIR/outputs
 	cp -r $ORIGINALDIR/models.org $DATADIR/models/
 fi
@@ -27,5 +28,5 @@ python entry_with_update.py --listen --port 3001  ${CMDARGS} > $FOOOCUS_LOGS 2>&
 
 # check usage
 touch $FOOOCUS_LOGS
-vast_usage 20 $FOOOCUS_LOGS
+./vast_usage.sh 20 $FOOOCUS_LOGS
 
